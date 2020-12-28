@@ -11,6 +11,8 @@
 		55158C862599C6ED00DF72C9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55158C852599C6ED00DF72C9 /* ContentView.swift */; };
 		55158C882599C6F000DF72C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55158C872599C6F000DF72C9 /* Assets.xcassets */; };
 		55158C8B2599C6F000DF72C9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55158C8A2599C6F000DF72C9 /* Preview Assets.xcassets */; };
+		55158C94259A218700DF72C9 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55158C93259A218700DF72C9 /* About.swift */; };
+		55158C97259A309000DF72C9 /* ModelPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55158C96259A309000DF72C9 /* ModelPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		55158C872599C6F000DF72C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55158C8A2599C6F000DF72C9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		55158C8C2599C6F000DF72C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55158C93259A218700DF72C9 /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
+		55158C96259A309000DF72C9 /* ModelPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,9 +58,11 @@
 			children = (
 				55158C832599C6ED00DF72C9 /* RelaxationMXApp.swift */,
 				55158C852599C6ED00DF72C9 /* ContentView.swift */,
+				55158C96259A309000DF72C9 /* ModelPlayer.swift */,
 				55158C872599C6F000DF72C9 /* Assets.xcassets */,
 				55158C8C2599C6F000DF72C9 /* Info.plist */,
 				55158C892599C6F000DF72C9 /* Preview Content */,
+				55158C93259A218700DF72C9 /* About.swift */,
 			);
 			path = RelaxationMX;
 			sourceTree = "<group>";
@@ -139,6 +145,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				55158C862599C6ED00DF72C9 /* ContentView.swift in Sources */,
+				55158C94259A218700DF72C9 /* About.swift in Sources */,
+				55158C97259A309000DF72C9 /* ModelPlayer.swift in Sources */,
 				55158C842599C6ED00DF72C9 /* RelaxationMXApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
