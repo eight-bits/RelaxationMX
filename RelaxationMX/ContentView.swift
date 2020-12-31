@@ -6,18 +6,19 @@
 //
 
 import SwiftUI
+import Combine
 
 struct Home: View {
+    // Модель player
+    @ObservedObject var viewModel = PlayerViewModel()
     
     // Массив количества повторов трека, 0 - постоянно...
-    let arrayCount = ["Infinitely", "1 - cycle", "2 - cycle", "3 - cycle", "4 - cycle", "5 - cycle", "6 - cycle", "7 - cycle", "8 - cycle", "9 - cycle",]
+    let arrayCount = ["Never", "1 - cycle", "2 - cycle", "3 - cycle", "4 - cycle", "5 - cycle", "6 - cycle", "7 - cycle", "8 - cycle", "9 - cycle", "Looped",]
     // Количество повторений трека...
-    @State private var selectCount = 1
-    // Вкл/Выкл повторений треков...
-    @State private var isCount = false
+    @State private var selectCount = 0
     
     // Массив треков...
-    let arrayTreckName = ["Rain", "Fire", "Stormsnow",]
+    let arrayTreckName = ["Rain", "Fire", "Snowstorm",]
     // Выбранный трек...
     @State private var selectTrack = 0
     
@@ -25,9 +26,13 @@ struct Home: View {
     @State private var darkMode = false
     
     // Позиция трека
-    @State private var positionTrack = 0.0
+    @State private var positionVolume: Float = 20.0
     
+    // Отобразить view about
     @State private var showAbout = false
+    
+    @State var now = Date()
+    let timer = Timer.publish(every: 1, on: .current, in: .common).autoconnect()
     
     var body: some View {
         NavigationView {
@@ -62,22 +67,25 @@ struct Home: View {
                             ForEach(0..<self.arrayTreckName.count) { index in
                                 Text(self.arrayTreckName[index])
                             }
+                        }).onChange(of: selectTrack, perform: { _ in
+                            self.viewModel.stop()
                         })
                     }
                 }
                 Section(header: Text("Settings")){
-                    HStack{
-                        Image(systemName: "repeat.circle")
-                        Toggle(isOn: $isCount, label: {
-                            Text("Turn on turn off repetitions")
-                        })
-                    }
                     HStack{
                         Image(systemName: "timer")
                         Picker("Count cycle", selection: $selectCount, content: {
                             ForEach(0..<self.arrayCount.count) { index in
                                 Text(self.arrayCount[index])
                             }
+                        }).onChange(of: selectCount, perform: { _ in
+                            self.viewModel.playerCycles = selectCount
+                            if self.viewModel.playerCycles > 9 {
+                                self.viewModel.playerCycles.negate()
+                            }
+                            self.viewModel.stop()
+                            
                         })
                     }
                     HStack{
@@ -90,42 +98,49 @@ struct Home: View {
             }
             HStack{
                 Button(action: {
-                    print("back")
+                    self.viewModel.setTimeBack15()
                 }, label: {
                     Image(systemName: "gobackward.15")
                         .font(.system(size: 32))
                         .padding(.leading, 15)
                 })
+                Button(action: {
+                        self.viewModel.initMedia(name: self.arrayTreckName[self.selectTrack])
+                        self.viewModel.play()
+                }, label: {
+                    Image(systemName: "play.circle")
+                        .font(.system(size: 54))
+                        .padding(.horizontal, 5)
+                })
+                Button(action: {
+                        self.viewModel.stop()
+                }, label: {
+                    Image(systemName: "stop.circle")
+                        .font(.system(size: 32))
+                        .padding(.horizontal, 5)
+                })
             Button(action: {
-                if self.isCount {
-                    print("true")
-                } else {
-                    print("false")
-                }
-            }, label: {
-                Image(systemName: "play.circle")
-                    .font(.system(size: 54))
-                    .padding(.horizontal, 5)
-            })
-            Button(action: {
-                    print("next")
+                self.viewModel.setTimeForfard15()
                 }, label: {
                     Image(systemName: "goforward.15")
                         .font(.system(size: 32))
                         .padding(.trailing, 15)
                 })
-            Spacer()
-            Text("00:00")
-                .font(.system(size: 54))
-                .padding(.horizontal)
-                .foregroundColor(.orange)
             }
-            Slider(value: $positionTrack, in: 0...100)
-                .padding()
-            Spacer()
-            Text("2020")
-                .font(.system(size: 12))
-                .foregroundColor(Color(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)))
+            HStack{
+                Image(systemName: "speaker.fill")
+                    .padding()
+                    .font(.system(size: 22))
+                    .foregroundColor(Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
+                Slider(value: $positionVolume, in: 0...100)
+                    .onChange(of: self.positionVolume, perform: { _ in self.viewModel.setVolume(vl: self.positionVolume)})
+                    .padding(.vertical)
+                    .accentColor(Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
+                Image(systemName: "speaker.wave.2.fill")
+                    .padding()
+                    .font(.system(size: 22))
+                    .foregroundColor(Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
+            }
         }
         .navigationBarHidden(true)
         }
@@ -133,7 +148,6 @@ struct Home: View {
         .colorScheme(darkMode ? .dark : .light)
     }
 }
-
 
 struct ContentView: View {
     var body: some View {
