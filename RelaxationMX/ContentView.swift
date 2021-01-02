@@ -9,30 +9,28 @@ import SwiftUI
 import Combine
 
 struct Home: View {
+    
     // Модель player
     @ObservedObject var viewModel = PlayerViewModel()
     
-    // Массив количества повторов трека, 0 - постоянно...
+    // Массив количества повторов трека, 0 - никогда...10 - бесконечно
     let arrayCount = ["Never", "1 - cycle", "2 - cycle", "3 - cycle", "4 - cycle", "5 - cycle", "6 - cycle", "7 - cycle", "8 - cycle", "9 - cycle", "Looped",]
     // Количество повторений трека...
     @State private var selectCount = 0
     
     // Массив треков...
-    let arrayTreckName = ["Rain", "Fire", "Snowstorm",]
+    let arrayTreckName = ["Rain", "Fire", "Snowstorm", "Nightingale", "Stream",]
     // Выбранный трек...
     @State private var selectTrack = 0
     
     // Вкл/Выкл темная тема
     @State private var darkMode = false
     
-    // Позиция трека
-    @State private var positionVolume: Float = 20.0
+    // Позиция громкости
+    @State private var positionVolume: Float = 0.5
     
     // Отобразить view about
     @State private var showAbout = false
-    
-    @State var now = Date()
-    let timer = Timer.publish(every: 1, on: .current, in: .common).autoconnect()
     
     var body: some View {
         NavigationView {
@@ -61,6 +59,8 @@ struct Home: View {
                             case 0: Image(systemName: "cloud.rain")
                             case 1: Image(systemName: "flame")
                             case 2: Image(systemName: "wind.snow")
+                            case 3: Image(systemName: "swift")
+                            case 4: Image(systemName: "point.topleft.down.curvedto.point.bottomright.up")
                             default: Image(systemName: "aqi.medium")
                         }
                         Picker("Track", selection: $selectTrack, content: {
@@ -132,8 +132,9 @@ struct Home: View {
                     .padding()
                     .font(.system(size: 22))
                     .foregroundColor(Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
-                Slider(value: $positionVolume, in: 0...100)
-                    .onChange(of: self.positionVolume, perform: { _ in self.viewModel.setVolume(vl: self.positionVolume)})
+                Slider(value: $positionVolume, in: 0.0...1.0, step: 0.01)
+                    .onChange(of: self.positionVolume, perform: { _ in self.viewModel.setVolume(vl: self.positionVolume)
+                    })
                     .padding(.vertical)
                     .accentColor(Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
                 Image(systemName: "speaker.wave.2.fill")

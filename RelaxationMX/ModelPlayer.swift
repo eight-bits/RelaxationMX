@@ -14,11 +14,11 @@ class PlayerViewModel: ObservableObject {
     // Статус проигрывателя
     @Published public var statusPlay = false
     
-    // Длинна трека
-    @Published public var maxDuration = 0.0
-    
     // Количество циклов проигрывания дорожки
     @Published public var playerCycles = 0
+    
+    // Сессия для получения громкости 
+    var session = AVAudioSession.sharedInstance()
     
     private var player: AVAudioPlayer?
     
@@ -37,13 +37,13 @@ class PlayerViewModel: ObservableObject {
     }
     
     public func setTimeForfard15() {
-        if (player?.isPlaying != nil) {
+        if self.statusPlay {
             player?.currentTime = player!.currentTime + 15
         }
     }
     
     public func setTimeBack15() {
-        if (player?.isPlaying != nil) {
+        if self.statusPlay {
             player?.currentTime = player!.currentTime - 15
         }
     }
@@ -52,7 +52,6 @@ class PlayerViewModel: ObservableObject {
         guard let audioPath = Bundle.main.path(forResource: name, ofType: "m4a") else { return }
         do {
             try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath))
-            maxDuration = player?.duration ?? 0.0
         } catch {
             print(error.localizedDescription)
         }
@@ -60,7 +59,11 @@ class PlayerViewModel: ObservableObject {
     }
     
     func getVolume()-> Float {
-        return player?.volume ?? 0.0
+        if ((try? session.setActive(true)) != nil) {
+            return session.outputVolume
+        } else {
+            return 0
+        }
     }
     
     func setVolume(vl: Float) {
