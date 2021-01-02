@@ -38,6 +38,7 @@
 		55337BB825A0D8C700F82527 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		55337BBA25A0D8CE00F82527 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		55337BBC25A0E35B00F82527 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		55337BBE25A0E8A600F82527 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +147,7 @@
 				Base,
 				ru,
 				it,
+				de,
 			);
 			mainGroup = 55158C772599C6ED00DF72C9;
 			productRefGroup = 55158C812599C6ED00DF72C9 /* Products */;
@@ -196,6 +198,7 @@
 				55337BB825A0D8C700F82527 /* ru */,
 				55337BBA25A0D8CE00F82527 /* en */,
 				55337BBC25A0E35B00F82527 /* it */,
+				55337BBE25A0E8A600F82527 /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

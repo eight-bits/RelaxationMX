@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  RelaxationMX
+
+  Created by Andrey Kudryavtsev on 02.01.2021.
+  
+*/
+"Select track" = "Titel auswählen";
+"Track" = "Spur";
+"Settings" = "die Einstellungen";
+"Count cycle" = "Zählzyklus";
+"Dark theme" = "Dunkles Thema";
+"Never" = "noch nie";
+"1 - cycle" = "1 - Zyklus";
+"2 - cycle" = "2 - Zyklus";
+"3 - cycle" = "3 - Zyklus";
+"4 - cycle" = "4 - Zyklus";
+"5 - cycle" = "5 - Zyklus";
+"6 - cycle" = "6 - Zyklus";
+"7 - cycle" = "7 - Zyklus";
+"8 - cycle" = "8 - Zyklus";
+"9 - cycle" = "9 - Zyklus";
+"Infinitely" = "Unendlich";
+"Rain" = "Regen";
+"Fire" = "Feuer";
+"Snowstorm" = "Schneesturm";
+"Nightingale" = "Nachtigall";
+"Stream" = "Strom";
