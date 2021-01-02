@@ -18,6 +18,7 @@
 		55158CA1259A4C7700DF72C9 /* Snowstorm.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 55158CA0259A4C7700DF72C9 /* Snowstorm.m4a */; };
 		55337BAD25A0D3AB00F82527 /* Stream.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 55337BAC25A0D3AB00F82527 /* Stream.m4a */; };
 		55337BB125A0D43C00F82527 /* Nightingale.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 55337BB025A0D43C00F82527 /* Nightingale.m4a */; };
+		55337BB725A0D8C700F82527 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55337BB925A0D8C700F82527 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,8 @@
 		55158CA0259A4C7700DF72C9 /* Snowstorm.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Snowstorm.m4a; sourceTree = "<group>"; };
 		55337BAC25A0D3AB00F82527 /* Stream.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Stream.m4a; sourceTree = "<group>"; };
 		55337BB025A0D43C00F82527 /* Nightingale.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Nightingale.m4a; sourceTree = "<group>"; };
+		55337BB825A0D8C700F82527 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		55337BBA25A0D8CE00F82527 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +72,7 @@
 				55158C9C259A4BED00DF72C9 /* Media */,
 				55158C832599C6ED00DF72C9 /* RelaxationMXApp.swift */,
 				55158C852599C6ED00DF72C9 /* ContentView.swift */,
+				55337BB925A0D8C700F82527 /* Localizable.strings */,
 				55158C96259A309000DF72C9 /* ModelPlayer.swift */,
 				55158C872599C6F000DF72C9 /* Assets.xcassets */,
 				55158C8C2599C6F000DF72C9 /* Info.plist */,
@@ -139,6 +143,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 55158C772599C6ED00DF72C9;
 			productRefGroup = 55158C812599C6ED00DF72C9 /* Products */;
@@ -160,6 +165,7 @@
 				55337BB125A0D43C00F82527 /* Nightingale.m4a in Resources */,
 				55158CA1259A4C7700DF72C9 /* Snowstorm.m4a in Resources */,
 				55337BAD25A0D3AB00F82527 /* Stream.m4a in Resources */,
+				55337BB725A0D8C700F82527 /* Localizable.strings in Resources */,
 				55158C9E259A4C4500DF72C9 /* Fire.m4a in Resources */,
 				55158C9A259A3E1600DF72C9 /* Rain.m4a in Resources */,
 			);
@@ -180,6 +186,18 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		55337BB925A0D8C700F82527 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55337BB825A0D8C700F82527 /* ru */,
+				55337BBA25A0D8CE00F82527 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		55158C8D2599C6F000DF72C9 /* Debug */ = {

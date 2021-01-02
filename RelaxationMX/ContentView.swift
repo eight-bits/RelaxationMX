@@ -14,7 +14,7 @@ struct Home: View {
     @ObservedObject var viewModel = PlayerViewModel()
     
     // Массив количества повторов трека, 0 - никогда...10 - бесконечно
-    let arrayCount = ["Never", "1 - cycle", "2 - cycle", "3 - cycle", "4 - cycle", "5 - cycle", "6 - cycle", "7 - cycle", "8 - cycle", "9 - cycle", "Looped",]
+    let arrayCount = [LocalizedStringKey("Never"), "1 - cycle", "2 - cycle", "3 - cycle", "4 - cycle", "5 - cycle", "6 - cycle", "7 - cycle", "8 - cycle", "9 - cycle", "Infinitely",]
     // Количество повторений трека...
     @State private var selectCount = 0
     
