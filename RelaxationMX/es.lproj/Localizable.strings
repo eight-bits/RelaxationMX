@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  RelaxationMX
+
+  Created by Andrey Kudryavtsev on 02.01.2021.
+  
+*/
+"Select track" = "Seleccionar pista";
+"Track" = "Pista";
+"Settings" = "Configuraciones";
+"Count cycle" = "Ciclo de conteo";
+"Dark theme" = "Tema oscuro";
+"Never" = "Nunca";
+"1 - cycle" = "1 - ciclo";
+"2 - cycle" = "2 - ciclo";
+"3 - cycle" = "3 - ciclo";
+"4 - cycle" = "4 - ciclo";
+"5 - cycle" = "5 - ciclo";
+"6 - cycle" = "6 - ciclo";
+"7 - cycle" = "7 - ciclo";
+"8 - cycle" = "8 - ciclo";
+"9 - cycle" = "9 - ciclo";
+"Infinitely" = "Infinitamente";
+"Rain" = "Lluvia";
+"Fire" = "Fuego";
+"Snowstorm" = "Nevada";
+"Nightingale" = "Ruiseñor";
+"Stream" = "Corriente";
