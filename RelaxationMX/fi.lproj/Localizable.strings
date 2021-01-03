@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  RelaxationMX
+
+  Created by Andrey Kudryavtsev on 02.01.2021.
+  
+*/
+"Select track" = "Valitse kappale";
+"Track" = "Seurata";
+"Settings" = "Asetukset";
+"Count cycle" = "Laske sykli";
+"Dark theme" = "Dark theme";
+"Never" = "Ei koskaan";
+"1 - cycle" = "1 - sykli";
+"2 - cycle" = "2 - sykli";
+"3 - cycle" = "3 - sykli";
+"4 - cycle" = "4 - sykli";
+"5 - cycle" = "5 - sykli";
+"6 - cycle" = "6 - sykli";
+"7 - cycle" = "7 - sykli";
+"8 - cycle" = "8 - sykli";
+"9 - cycle" = "9 - sykli";
+"Infinitely" = "Äärettömän";
+"Rain" = "Sade";
+"Fire" = "Antaa potkut";
+"Snowstorm" = "Lumimyrsky";
+"Nightingale" = "Satakieli";
+"Stream" = "Suoratoisto";

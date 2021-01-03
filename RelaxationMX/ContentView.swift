@@ -34,116 +34,116 @@ struct Home: View {
     
     var body: some View {
         NavigationView {
-        VStack {
-            HStack {
-            Text("RelaxationMX")
-                .font(.title)
-                .bold()
-                .foregroundColor(Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
-                .padding()
-                .shadow(color: Color(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)), radius: 5.5, x: 0, y: 0)
-                Spacer()
-                NavigationLink(destination: About(),
-                               label: {
-                                Image(systemName: "bookmark.fill")
-                                    .font(.title)
-                                    .foregroundColor(Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
-                                    .padding()
-                                    .shadow(color: Color(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)), radius: 5.5, x: 0, y: 0)
-                               })
-            }
-            Form{
-                Section(header: Text("Select track")){
-                    HStack{
-                        switch selectTrack {
-                            case 0: Image(systemName: "cloud.rain")
-                            case 1: Image(systemName: "flame")
-                            case 2: Image(systemName: "wind.snow")
-                            case 3: Image(systemName: "swift")
-                            case 4: Image(systemName: "point.topleft.down.curvedto.point.bottomright.up")
-                            default: Image(systemName: "aqi.medium")
+            VStack {
+                HStack {
+                    Text("RelaxationMX")
+                        .font(.title)
+                        .bold()
+                        .foregroundColor(Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
+                        .padding()
+                        .shadow(color: Color(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)), radius: 5.5, x: 0, y: 0)
+                    Spacer()
+                    NavigationLink(destination: About(),
+                                   label: {
+                                    Image(systemName: "bookmark.fill")
+                                        .font(.title)
+                                        .foregroundColor(Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
+                                        .padding()
+                                        .shadow(color: Color(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)), radius: 5.5, x: 0, y: 0)
+                                   })
+                }
+                Form{
+                    Section(header: Text("Select track")){
+                        HStack{
+                            switch selectTrack {
+                                case 0: Image(systemName: "cloud.rain")
+                                case 1: Image(systemName: "flame")
+                                case 2: Image(systemName: "wind.snow")
+                                case 3: Image(systemName: "swift")
+                                case 4: Image(systemName: "point.topleft.down.curvedto.point.bottomright.up")
+                                default: Image(systemName: "aqi.medium")
+                            }
+                            Picker("Track", selection: $selectTrack, content: {
+                                ForEach(0..<self.arrayTreckName.count) { index in
+                                    Text(self.arrayTreckName[index])
+                                }
+                            }).onChange(of: selectTrack, perform: { _ in
+                                self.viewModel.stop()
+                            })
                         }
-                        Picker("Track", selection: $selectTrack, content: {
-                            ForEach(0..<self.arrayTreckName.count) { index in
-                                Text(self.arrayTreckName[index])
-                            }
-                        }).onChange(of: selectTrack, perform: { _ in
-                            self.viewModel.stop()
-                        })
+                    }
+                    Section(header: Text("Settings")){
+                        HStack{
+                            Image(systemName: "timer")
+                            Picker("Count cycle", selection: $selectCount, content: {
+                                ForEach(0..<self.arrayCount.count) { index in
+                                    Text(self.arrayCount[index])
+                                }
+                            }).onChange(of: selectCount, perform: { _ in
+                                self.viewModel.playerCycles = selectCount
+                                if self.viewModel.playerCycles > 9 {
+                                    self.viewModel.playerCycles.negate()
+                                }
+                                self.viewModel.stop()
+                                
+                            })
+                        }
+                        HStack{
+                            Image(systemName: "moon")
+                            Toggle(isOn: $darkMode, label: {
+                                Text("Dark theme")
+                            })
+                        }
                     }
                 }
-                Section(header: Text("Settings")){
-                    HStack{
-                        Image(systemName: "timer")
-                        Picker("Count cycle", selection: $selectCount, content: {
-                            ForEach(0..<self.arrayCount.count) { index in
-                                Text(self.arrayCount[index])
-                            }
-                        }).onChange(of: selectCount, perform: { _ in
-                            self.viewModel.playerCycles = selectCount
-                            if self.viewModel.playerCycles > 9 {
-                                self.viewModel.playerCycles.negate()
-                            }
-                            self.viewModel.stop()
-                            
-                        })
-                    }
-                    HStack{
-                        Image(systemName: "moon")
-                        Toggle(isOn: $darkMode, label: {
-                            Text("Dark theme")
-                        })
-                    }
-                }
-            }
-            HStack{
-                Button(action: {
-                    self.viewModel.setTimeBack15()
-                }, label: {
-                    Image(systemName: "gobackward.15")
-                        .font(.system(size: 32))
-                        .padding(.leading, 15)
-                })
-                Button(action: {
+                HStack{
+                    Button(action: {
+                        self.viewModel.setTimeBack15()
+                    }, label: {
+                        Image(systemName: "gobackward.15")
+                            .font(.system(size: 32))
+                            .padding(.leading, 15)
+                    })
+                    Button(action: {
                         self.viewModel.initMedia(name: self.arrayTreckName[self.selectTrack])
                         self.viewModel.play()
-                }, label: {
-                    Image(systemName: "play.circle")
-                        .font(.system(size: 54))
-                        .padding(.horizontal, 5)
-                })
-                Button(action: {
-                        self.viewModel.stop()
-                }, label: {
-                    Image(systemName: "stop.circle")
-                        .font(.system(size: 32))
-                        .padding(.horizontal, 5)
-                })
-            Button(action: {
-                self.viewModel.setTimeForfard15()
-                }, label: {
-                    Image(systemName: "goforward.15")
-                        .font(.system(size: 32))
-                        .padding(.trailing, 15)
-                })
-            }
-            HStack{
-                Image(systemName: "speaker.fill")
-                    .padding()
-                    .font(.system(size: 22))
-                    .foregroundColor(Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
-                Slider(value: $positionVolume, in: 0.0...1.0, step: 0.01)
-                    .onChange(of: self.positionVolume, perform: { _ in self.viewModel.setVolume(vl: self.positionVolume)
+                    }, label: {
+                        Image(systemName: "play.circle")
+                            .font(.system(size: 54))
+                            .padding(.horizontal, 5)
                     })
-                    .padding(.vertical)
-                    .accentColor(Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
-                Image(systemName: "speaker.wave.2.fill")
-                    .padding()
-                    .font(.system(size: 22))
-                    .foregroundColor(Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
+                    Button(action: {
+                        self.viewModel.stop()
+                    }, label: {
+                        Image(systemName: "stop.circle")
+                            .font(.system(size: 32))
+                            .padding(.horizontal, 5)
+                    })
+                    Button(action: {
+                        self.viewModel.setTimeForfard15()
+                    }, label: {
+                        Image(systemName: "goforward.15")
+                            .font(.system(size: 32))
+                            .padding(.trailing, 15)
+                    })
+                }
+                HStack{
+                    Image(systemName: "speaker.fill")
+                        .padding()
+                        .font(.system(size: 22))
+                        .foregroundColor(Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
+                    Slider(value: $positionVolume, in: 0.0...1.0, step: 0.01)
+                        .onChange(of: self.positionVolume, perform: { _ in self.viewModel.setVolume(vl: self.positionVolume)
+                        })
+                        .padding(.vertical)
+                        .accentColor(Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
+                    Image(systemName: "speaker.wave.2.fill")
+                        .padding()
+                        .font(.system(size: 22))
+                        .foregroundColor(Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
+                }
             }
-        }
-        .navigationBarHidden(true)
+            .navigationBarHidden(true)
         }
         .accentColor(Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
         .colorScheme(darkMode ? .dark : .light)
