@@ -15,11 +15,13 @@ struct Home: View {
     
     // Массив количества повторов трека, 0 - никогда...10 - бесконечно
     let arrayCount = [LocalizedStringKey("Never"), "1 - cycle", "2 - cycle", "3 - cycle", "4 - cycle", "5 - cycle", "6 - cycle", "7 - cycle", "8 - cycle", "9 - cycle", "Infinitely",]
+    
     // Количество повторений трека...
     @State private var selectCount = 0
     
     // Массив треков...
     let arrayTreckName = ["Rain", "Fire", "Snowstorm", "Nightingale", "Stream",]
+    
     // Выбранный трек...
     @State private var selectTrack = 0
     
@@ -127,7 +129,7 @@ struct Home: View {
                             .padding(.trailing, 15)
                     })
                 }
-                HStack{
+                /* HStack{
                     Image(systemName: "speaker.fill")
                         .padding()
                         .font(.system(size: 22))
@@ -141,7 +143,7 @@ struct Home: View {
                         .padding()
                         .font(.system(size: 22))
                         .foregroundColor(Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
-                }
+                } */
             }
             .navigationBarHidden(true)
         }
